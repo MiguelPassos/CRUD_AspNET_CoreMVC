@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Entity.Usuario>
+
+    @{
+    ViewData["Title"] = "Index";
+    }
+
+    @Html.AntiForgeryToken()
+
+    <h2>Usuários</h2>
+
+    <div style="overflow-y: auto; max-height: 250px">
+        <table class="table" id="tbUsuarios">
+            <thead>
+                <tr>
+                    <th>
+                        Código
+                    </th>
+                    <th>
+                        Nome do Usuário
+                    </th>
+                    <th>
+                        Data de Nascimento
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Codigo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataNascimento)                        
+                    </td>
+                    <td>
+                        <input type="button" class="btn btn-default btnEdit" name="@item.Codigo" value="Editar" />
+                        <input type="button" class="btn btn-default btnDetail" name="@item.Codigo" value="Detalhes" />
+                        <input type="button" class="btn btn-default btnDelete" name="@item.Codigo" value="Deletar" />
+                    </td>
+                </tr>
+}
+            </tbody>
+        </table>
+    </div>
+    <p>
+        <label type="button" class="btn btn-primary" data-toggle="modal" data-target="#divCreate">Adicionar Usuário</label>
+    </p>
+    <div>
+        <partial name="_PartialCreate" />
+    </div>
+    <div>
+        <partial name="_PartialDetail" />
+    </div>
+    <div>
+        <partial name="_PartialEdit" />
+    </div>

@@ -1,0 +1,6 @@
+﻿body {
+}
+
+tbody tr:hover{
+    background-color: whitesmoke;
+}
